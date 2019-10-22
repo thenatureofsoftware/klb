@@ -28,8 +28,8 @@ if [[ ! ${userid} -eq 0 ]]; then
   exit 1
 fi
 
-sudo curl -sSL -o - https://github.com/jpillora/chisel/releases/download/${VERSION}/$(release_file) | gunzip > /usr/local/bin/chisel
-sudo chmod a+x /usr/local/bin/chisel
+curl -sSL -o - https://github.com/jpillora/chisel/releases/download/${VERSION}/$(release_file) | gunzip > /usr/local/bin/chisel
+chmod a+x /usr/local/bin/chisel
 
 if [[ "$(chisel --help 2>&1 | grep ${VERSION})" == "" ]]; then
   echo "install failed"
