@@ -1,0 +1,14 @@
+[Unit]
+Description=Chisel Server Service
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+StartLimitInterval=0
+EnvironmentFile=/etc/default/chisel
+ExecStart=/usr/local/bin/chisel server --reverse --host ${CHISEL_HOST} --port ${CHISEL_PORT} --auth ${CHISEL_AUTH} --key ${CHISEL_KEY} --proxy http://example.com
+
+[Install]
+WantedBy=multi-user.target
