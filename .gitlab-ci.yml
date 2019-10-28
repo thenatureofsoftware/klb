@@ -1,0 +1,17 @@
+services:
+  - name: docker:stable-dind
+    entrypoint: ["dockerd"]
+    command: ["--host=0.0.0.0:2375", "--experimental"]
+
+stages:
+  - build-images
+
+make-chisel-images:
+  stage: build-images
+  tags:
+    - docker
+    - multiarch
+  script:
+    - apk add git make
+    - docker login -u $DOCKER_USER -p $DOCKER_PWD
+    - make chisel-manifest
