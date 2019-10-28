@@ -1,3 +1,6 @@
+variables:
+  DOCKER_CLI_EXPERIMENTAL: enabled
+
 services:
   - name: docker:stable-dind
     entrypoint: ["dockerd"]
